@@ -33,6 +33,7 @@ const SecondPage = ({
             }
         ]
     }, [])
+    // console.log(wwfg);
 
 
     const mwfg = MachineWiseFlagRatio.reduce((pre, cur) => {
@@ -103,26 +104,26 @@ const SecondPage = ({
                         </div>
                     </div>
                     <div className="sSecondContainer">
-                        <div className="ssInnerContainer">
+                        <div className="ssInnerContainer"  >
                             <div className="ssHeader">Worker Wise Flag Ratio</div>
                             <div className="stackedChatContainer">
                                 <ResponsiveContainer width="100%" height="100%">
                                     <BarChart width="100%" height="100%" data={wwfg} >
                                         <Legend verticalAlign='top'  iconType="circle" iconSize={10} height={5} align='left' wrapperStyle={{fontSize:"12px",textAlign:'justify'}} />
-                                        <XAxis dataKey="WorkerCode" strokeWidth={0} angle="90" >
+                                        <XAxis textAnchor='start' height={50} tickMargin={0} interval={0} dataKey="WorkerCode" angle="90" scale="auto" minTickGap={0}  >
                                         </XAxis>
                                         <Tooltip />
                                         {/* <YAxis /> */}
-                                        <Bar dataKey="RED" stackId="a" fill="#FF0E15" >
+                                        <Bar dataKey="RED" stackId="a" fill="#FF0E15" label>
                                             {/* <LabelList position="center" /> */}
                                         </Bar>
-                                        <Bar dataKey="BLUE" stackId="a" fill="blue" >
+                                        <Bar dataKey="BLUE" stackId="a" fill="blue" label>
                                             {/* <LabelList position="center" /> */}
                                         </Bar>
-                                        <Bar dataKey="GREEN" stackId="a" fill="#2D8956" >
+                                        <Bar dataKey="GREEN" stackId="a" fill="#2D8956" label>
                                             {/* <LabelList position="center" /> */}
                                         </Bar>
-                                        <Bar dataKey="YELLOW" stackId="a" fill="#EAC93B" >
+                                        <Bar dataKey="YELLOW" stackId="a" fill="#EAC93B" label>
                                             {/* <LabelList position="center" /> */}
                                         </Bar>
                                     </BarChart>
@@ -137,7 +138,8 @@ const SecondPage = ({
                                 <ResponsiveContainer width="100%" height="100%">
                                     <BarChart width='100%' height='100%' data={mwfg} >
                                         {/* <CartesianGrid /> */}
-                                        <XAxis dataKey="MachineCode" strokeWidth={0} />
+                                        <Tooltip />
+                                        <XAxis textAnchor='start' height={30} tickMargin={0} interval={0} dataKey="MachineCode" angle="90" scale="auto" minTickGap={0} />
                                         {/* <YAxis /> */}
                                         <Legend wrapperStyle={{ top: 0 }} />
                                         <Bar dataKey="RED" stackId="a" fill="#FF0E15" >
@@ -164,7 +166,7 @@ const SecondPage = ({
                                 <ResponsiveContainer width='100%' height='100%'>
                                     <BarChart width='100%' height='100%' data={TopBestAndWordWorkers}>
                                         {/* <CartesianGrid strokeDasharray="3 3" /> */}
-                                        <XAxis dataKey="WorkerCode" />
+                                        <XAxis dataKey="WorkerCode" height={60} angle="90" textAnchor='start' interval={0}/>
                                         {/* <YAxis /> */}
                                         <Tooltip />
                                         {/* <Legend /> */}
@@ -182,21 +184,21 @@ const SecondPage = ({
                         </div>
                     </div>
                     <div className="sFiveContainer">
-                        <div className="sfourInner">
+                        <div className="sfourInner"  >
                             <div className="sfourHeader">Operations Wise Fault Ratio</div>
-                            <div className="sfoutChartContainer">
-                                <ResponsiveContainer width='100%' height='100%'>
+                            <div className="sfoutChartContainer" style={{overflowX:'scroll',overflowY:'hidden'}}>
+                                <ResponsiveContainer width='200%' height='100%'>
                                     <BarChart width='100%' height='100%' data={OprationWiseFaultRatio} >
                                         {/* <CartesianGrid strokeDasharray="3 3" /> */}
-                                        <Legend wrapperStyle={{top:0}} />
-                                        {/* <XAxis dataKey="name" /> */}
+                                        <Legend align='left' verticalAlign='top' />
+                                        <XAxis dataKey="OperationDescription" tick={{fontSize: 12}} textAnchor='start' height={50} tickMargin={0} interval={0} angle="90" scale="auto" minTickGap={0} />
                                         {/* <YAxis /> */}
                                         <Tooltip />
                                         {/* <Legend /> */}
-                                        <Bar dataKey="CheckedPcs" fill="#2D8956">
+                                        <Bar dataKey="CheckedPcs" fill="#2D8956" barSize={20}>
                                             <LabelList dataKey='pv' position='top' />
                                         </Bar>
-                                        <Bar dataKey="DefectedPcs" fill="#FF0E15"  >
+                                        <Bar dataKey="DefectedPcs" fill="#FF0E15" barSize={20} >
                                             <LabelList dataKey='uv' position='top' />
                                         </Bar>
                                     </BarChart>
