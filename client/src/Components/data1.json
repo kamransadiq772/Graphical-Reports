@@ -1,0 +1,925 @@
+{
+    "line": [
+        {
+            "LineDescription": "Line-3"
+        }
+    ],
+    "section": [
+        {
+            "SectionDescription": "Front"
+        }
+    ],
+    "TodayDHU": [
+        {
+            "TodayDHU": 14
+        }
+    ],
+    "Top3FaultyOperations": [
+        {
+            "TotalFaults": 79,
+            "OperationDescription": "`NOTCHES ATTACH"
+        },
+        {
+            "TotalFaults": 65,
+            "OperationDescription": "Pocket Linning Attach To Hang"
+        },
+        {
+            "TotalFaults": 49,
+            "OperationDescription": "Front Panel Over Lock- Crotch"
+        }
+    ],
+    "TodayDefectRatio": [
+        {
+            "TotalFaults": 774,
+            "CheckedPieces": 230
+        }
+    ],
+    "FaultPercentageWise": [
+        {
+            "FaultDescription": "Broken Stitch",
+            "FaultPercentage": 25,
+            "TotalFaults": 4
+        },
+        {
+            "FaultDescription": "Zip Distance Uneven",
+            "FaultPercentage": 25,
+            "TotalFaults": 4
+        },
+        {
+            "FaultDescription": "Uneven Edge",
+            "FaultPercentage": 15.533980582,
+            "TotalFaults": 103
+        },
+        {
+            "FaultDescription": "Btk Miss",
+            "FaultPercentage": 4.854368932,
+            "TotalFaults": 103
+        },
+        {
+            "FaultDescription": "Uneven edge Panel Attach",
+            "FaultPercentage": 8.737864077,
+            "TotalFaults": 103
+        },
+        {
+            "FaultDescription": "Broken Stitch",
+            "FaultPercentage": 13.592233009,
+            "TotalFaults": 103
+        },
+        {
+            "FaultDescription": "Loose Stitch",
+            "FaultPercentage": 8.737864077,
+            "TotalFaults": 103
+        },
+        {
+            "FaultDescription": "Fly Eyelet Skip",
+            "FaultPercentage": 1.941747572,
+            "TotalFaults": 103
+        }
+    ],
+    "InlineFlagStatus": [
+        {
+            "RoundColor": "BLUE",
+            "RoundTotal": 1
+        },
+        {
+            "RoundColor": "GREEN",
+            "RoundTotal": 3
+        },
+        {
+            "RoundColor": "RED",
+            "RoundTotal": 20
+        },
+        {
+            "RoundColor": "YELLOW",
+            "RoundTotal": 17
+        }
+    ],
+    "InlineDhuCpTf": [
+        {
+            "CheckedPcs": 287,
+            "TotalFaults": 58,
+            "TodayDHU": 20.21
+        }
+    ],
+    "WorkerWiseFlagRatio": [
+        {
+            "WorkerID": 1,
+            "WorkerCode": "155192",
+            "WorkerDescription": "Anjum Charagh",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 2,
+            "WorkerCode": "152876",
+            "WorkerDescription": "M. Waseem",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 2,
+            "WorkerCode": "152876",
+            "WorkerDescription": "M. Waseem",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 3,
+            "WorkerCode": "137435",
+            "WorkerDescription": "Liaqat Ali",
+            "RoundColor": "RED",
+            "RoundTotal": 3
+        },
+        {
+            "WorkerID": 3,
+            "WorkerCode": "137435",
+            "WorkerDescription": "Liaqat Ali",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 2
+        },
+        {
+            "WorkerID": 4,
+            "WorkerCode": "150275",
+            "WorkerDescription": "M.Qasim",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 5,
+            "WorkerCode": "143296",
+            "WorkerDescription": "Azhar Ali",
+            "RoundColor": "RED",
+            "RoundTotal": 2
+        },
+        {
+            "WorkerID": 6,
+            "WorkerCode": "138561",
+            "WorkerDescription": "Amir Ali",
+            "RoundColor": "BLUE",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 6,
+            "WorkerCode": "138561",
+            "WorkerDescription": "Amir Ali",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 6,
+            "WorkerCode": "138561",
+            "WorkerDescription": "Amir Ali",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 7,
+            "WorkerCode": "150979",
+            "WorkerDescription": "Nadeem Ahmad",
+            "RoundColor": "RED",
+            "RoundTotal": 2
+        },
+        {
+            "WorkerID": 7,
+            "WorkerCode": "150979",
+            "WorkerDescription": "Nadeem Ahmad",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 2
+        },
+        {
+            "WorkerID": 8,
+            "WorkerCode": "136484",
+            "WorkerDescription": "Ijaz Ahmad",
+            "RoundColor": "RED",
+            "RoundTotal": 2
+        },
+        {
+            "WorkerID": 8,
+            "WorkerCode": "136484",
+            "WorkerDescription": "Ijaz Ahmad",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 2
+        },
+        {
+            "WorkerID": 9,
+            "WorkerCode": "134761",
+            "WorkerDescription": "Saleem Akhtar",
+            "RoundColor": "GREEN",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 9,
+            "WorkerCode": "134761",
+            "WorkerDescription": "Saleem Akhtar",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 11,
+            "WorkerCode": "134751",
+            "WorkerDescription": "M.Zohaib",
+            "RoundColor": "GREEN",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 14,
+            "WorkerCode": "135027",
+            "WorkerDescription": "Amir Masih",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 19,
+            "WorkerCode": "134691",
+            "WorkerDescription": "NADEEM HUSSAIN",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 23,
+            "WorkerCode": "134703",
+            "WorkerDescription": "FIDA KHAN",
+            "RoundColor": "RED",
+            "RoundTotal": 2
+        },
+        {
+            "WorkerID": 23,
+            "WorkerCode": "134703",
+            "WorkerDescription": "FIDA KHAN",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 2
+        },
+        {
+            "WorkerID": 24,
+            "WorkerCode": "134723",
+            "WorkerDescription": "MUHAMMAD SAMEER",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 27,
+            "WorkerCode": "134737",
+            "WorkerDescription": "JAMSHED ALI",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 28,
+            "WorkerCode": "134738",
+            "WorkerDescription": "SHAKIR",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 30,
+            "WorkerCode": "134747",
+            "WorkerDescription": "SHARAFAT ALI",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 34,
+            "WorkerCode": "134754",
+            "WorkerDescription": "MUHAMMAD SABIR",
+            "RoundColor": "GREEN",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 34,
+            "WorkerCode": "134754",
+            "WorkerDescription": "MUHAMMAD SABIR",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 50,
+            "WorkerCode": "134854",
+            "WorkerDescription": "ARSLAN SHAFIQUE",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 55,
+            "WorkerCode": "134966",
+            "WorkerDescription": "GULL NAWAZ KHAN",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 203,
+            "WorkerCode": "151897",
+            "WorkerDescription": "ALLAH WASIYA RASHEED",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "WorkerID": 211,
+            "WorkerCode": "152436",
+            "WorkerDescription": "FARIDA DILBAR",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 1
+        }
+    ],
+    "MachineWiseFlagRatio": [
+        {
+            "MachineID": 16,
+            "MachineCode": "863",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "BLUE",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 15,
+            "MachineCode": "924",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "GREEN",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 64,
+            "MachineCode": "SN0981",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "GREEN",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 707,
+            "MachineCode": "E0037",
+            "MachineDescription": "Eyelet Machine",
+            "RoundColor": "GREEN",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 15,
+            "MachineCode": "924",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "RED",
+            "RoundTotal": 2
+        },
+        {
+            "MachineID": 16,
+            "MachineCode": "863",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 17,
+            "MachineCode": "867",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "RED",
+            "RoundTotal": 2
+        },
+        {
+            "MachineID": 19,
+            "MachineCode": "929",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 20,
+            "MachineCode": "898",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 22,
+            "MachineCode": "911",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "RED",
+            "RoundTotal": 2
+        },
+        {
+            "MachineID": 29,
+            "MachineCode": "133",
+            "MachineDescription": "Feed of Arm",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 35,
+            "MachineCode": "SN1391",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 36,
+            "MachineCode": "SN0995",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 39,
+            "MachineCode": "SN",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 40,
+            "MachineCode": "SN0980",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 43,
+            "MachineCode": "SN0872",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 50,
+            "MachineCode": "SN0673",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 103,
+            "MachineCode": "SN1093",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 147,
+            "MachineCode": "SN1412",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 242,
+            "MachineCode": "SN0870",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 262,
+            "MachineCode": "SN0894",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "RED",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 15,
+            "MachineCode": "924",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 16,
+            "MachineCode": "863",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 17,
+            "MachineCode": "867",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 18,
+            "MachineCode": "913",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 1
+        },
+        {
+            "MachineID": 19,
+            "MachineCode": "929",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 2
+        },
+        {
+            "MachineID": 20,
+            "MachineCode": "898",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 3
+        },
+        {
+            "MachineID": 22,
+            "MachineCode": "911",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 2
+        },
+        {
+            "MachineID": 23,
+            "MachineCode": "917",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 2
+        },
+        {
+            "MachineID": 38,
+            "MachineCode": "SN0976",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 3
+        },
+        {
+            "MachineID": 45,
+            "MachineCode": "SN1387",
+            "MachineDescription": "Single Needle Lock Stitch",
+            "RoundColor": "YELLOW",
+            "RoundTotal": 1
+        }
+    ],
+    "OprationWiseFaultRatio": [
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 1,
+            "OperationID": 44,
+            "OperationCode": "17261",
+            "OperationDescription": "`CROTCH JOIN TN (ZIP FLY)"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 2,
+            "OperationID": 30,
+            "OperationCode": "17347",
+            "OperationDescription": "`THREAD TRIMMING BACK POCKET HEM"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 1,
+            "OperationID": 77,
+            "OperationCode": "17756",
+            "OperationDescription": "`HIP STITCH BARTACK-2"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 1,
+            "OperationID": 24,
+            "OperationCode": "17793",
+            "OperationDescription": "`POCKET BAG TURN & TOP ST. (1 SIDED CURVE)"
+        },
+        {
+            "CheckedPcs": 14,
+            "TotalFaults": 3,
+            "OperationID": 50,
+            "OperationCode": "18177",
+            "OperationDescription": "`FRONT PANNEL SIDE OVERLOCK-PANT"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 1,
+            "OperationID": 40,
+            "OperationCode": "18304",
+            "OperationDescription": "`J STITCH ZIP FLY TN"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 0,
+            "OperationID": 4,
+            "OperationCode": "19526",
+            "OperationDescription": "Back Seam Join"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 2,
+            "OperationID": 22,
+            "OperationCode": "19546",
+            "OperationDescription": "`TRIM FACING-1"
+        },
+        {
+            "CheckedPcs": 14,
+            "TotalFaults": 2,
+            "OperationID": 11,
+            "OperationCode": "19581",
+            "OperationDescription": "ANL Label Att."
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 3,
+            "OperationID": 52,
+            "OperationCode": "19584",
+            "OperationDescription": "`FRONT PANNEL EXTRA THREAD TRIM (COMPLETE)"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 0,
+            "OperationID": 21,
+            "OperationCode": "19586",
+            "OperationDescription": "`NOTCHES TRACING"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 0,
+            "OperationID": 74,
+            "OperationCode": "19600",
+            "OperationDescription": "`WAIST BAND BUTTON HOLE-1"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 3,
+            "OperationID": 81,
+            "OperationCode": "19652",
+            "OperationDescription": "Front Panel Over Lock- Crotch"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 1,
+            "OperationID": 2,
+            "OperationCode": "19945",
+            "OperationDescription": "Back Yoke Att."
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 2,
+            "OperationID": 20,
+            "OperationCode": "20527",
+            "OperationDescription": "`WATCH PKT SIDE STAY STITCH"
+        },
+        {
+            "CheckedPcs": 21,
+            "TotalFaults": 3,
+            "OperationID": 3,
+            "OperationCode": "21852",
+            "OperationDescription": "Thread Trimming Yoke"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 1,
+            "OperationID": 67,
+            "OperationCode": "21856",
+            "OperationDescription": "`WAIST BAND CHAIN OPEN-2*2"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 1,
+            "OperationID": 27,
+            "OperationCode": "21945",
+            "OperationDescription": "`BACK POCKET PLEAT TOP STITCH(SNLS)-2"
+        },
+        {
+            "CheckedPcs": 42,
+            "TotalFaults": 9,
+            "OperationID": 9,
+            "OperationCode": "22148",
+            "OperationDescription": "BK PKt Top Stitch"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 1,
+            "OperationID": 35,
+            "OperationCode": "23209",
+            "OperationDescription": "`WAIST BAND FUSE-(AUTO PR.)CONTUR 2 PC(SEPARATE)"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 2,
+            "OperationID": 6,
+            "OperationCode": "23430",
+            "OperationDescription": "Bk PKt Tracing"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 2,
+            "OperationID": 10,
+            "OperationCode": "23497",
+            "OperationDescription": "BK PKt BTK"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 1,
+            "OperationID": 71,
+            "OperationCode": "23498",
+            "OperationDescription": "`LOOP ATTACH WITH INNER PATCH-2"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 2,
+            "OperationID": 28,
+            "OperationCode": "23634",
+            "OperationDescription": "`BACK PKT HEM WITH FOLDER-2 (MANUAL TRIM)"
+        },
+        {
+            "CheckedPcs": 14,
+            "TotalFaults": 4,
+            "OperationID": 5,
+            "OperationCode": "23674",
+            "OperationDescription": "Thread Trimming Back Rise"
+        },
+        {
+            "CheckedPcs": 21,
+            "TotalFaults": 4,
+            "OperationID": 7,
+            "OperationCode": "23675",
+            "OperationDescription": "BK PKt Att."
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 2,
+            "OperationID": 37,
+            "OperationCode": "24582",
+            "OperationDescription": "`HANG SWING TWILL TAPE CUTTING"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 2,
+            "OperationID": 15,
+            "OperationCode": "24914",
+            "OperationDescription": "`FLY ZIPPER ATTACH"
+        },
+        {
+            "CheckedPcs": 7,
+            "TotalFaults": 2,
+            "OperationID": 58,
+            "OperationCode": "25130",
+            "OperationDescription": "`OUTSEAM CLOSE BUSTERED-PANT (SNCS)"
+        }
+    ],
+    "TopBestAndWordWorkers": [
+        {
+            "WorkerID": 211,
+            "WorkerCode": "152436",
+            "WorkerDescription": "FARIDA DILBAR",
+            "CheckedPcs": 7,
+            "TotalFaults": 3,
+            "TodayDHU": 42.86
+        },
+        {
+            "WorkerID": 27,
+            "WorkerCode": "134737",
+            "WorkerDescription": "JAMSHED ALI",
+            "CheckedPcs": 7,
+            "TotalFaults": 3,
+            "TodayDHU": 42.86
+        },
+        {
+            "WorkerID": 28,
+            "WorkerCode": "134738",
+            "WorkerDescription": "SHAKIR",
+            "CheckedPcs": 7,
+            "TotalFaults": 2,
+            "TodayDHU": 28.57
+        },
+        {
+            "WorkerID": 24,
+            "WorkerCode": "134723",
+            "WorkerDescription": "MUHAMMAD SAMEER",
+            "CheckedPcs": 7,
+            "TotalFaults": 2,
+            "TodayDHU": 28.57
+        },
+        {
+            "WorkerID": 50,
+            "WorkerCode": "134854",
+            "WorkerDescription": "ARSLAN SHAFIQUE",
+            "CheckedPcs": 7,
+            "TotalFaults": 2,
+            "TodayDHU": 28.57
+        },
+        {
+            "WorkerID": 5,
+            "WorkerCode": "143296",
+            "WorkerDescription": "Azhar Ali",
+            "CheckedPcs": 14,
+            "TotalFaults": 4,
+            "TodayDHU": 28.57
+        },
+        {
+            "WorkerID": 55,
+            "WorkerCode": "134966",
+            "WorkerDescription": "GULL NAWAZ KHAN",
+            "CheckedPcs": 7,
+            "TotalFaults": 2,
+            "TodayDHU": 28.57
+        },
+        {
+            "WorkerID": 23,
+            "WorkerCode": "134703",
+            "WorkerDescription": "FIDA KHAN",
+            "CheckedPcs": 28,
+            "TotalFaults": 7,
+            "TodayDHU": 25
+        },
+        {
+            "WorkerID": 2,
+            "WorkerCode": "152876",
+            "WorkerDescription": "M. Waseem",
+            "CheckedPcs": 14,
+            "TotalFaults": 3,
+            "TodayDHU": 21.43
+        },
+        {
+            "WorkerID": 3,
+            "WorkerCode": "137435",
+            "WorkerDescription": "Liaqat Ali",
+            "CheckedPcs": 35,
+            "TotalFaults": 7,
+            "TodayDHU": 20
+        },
+        {
+            "WorkerID": 6,
+            "WorkerCode": "138561",
+            "WorkerDescription": "Amir Ali",
+            "CheckedPcs": 21,
+            "TotalFaults": 4,
+            "TodayDHU": 19.05
+        },
+        {
+            "WorkerID": 7,
+            "WorkerCode": "150979",
+            "WorkerDescription": "Nadeem Ahmad",
+            "CheckedPcs": 28,
+            "TotalFaults": 5,
+            "TodayDHU": 17.86
+        },
+        {
+            "WorkerID": 8,
+            "WorkerCode": "136484",
+            "WorkerDescription": "Ijaz Ahmad",
+            "CheckedPcs": 28,
+            "TotalFaults": 5,
+            "TodayDHU": 17.86
+        },
+        {
+            "WorkerID": 14,
+            "WorkerCode": "135027",
+            "WorkerDescription": "Amir Masih",
+            "CheckedPcs": 7,
+            "TotalFaults": 1,
+            "TodayDHU": 14.29
+        },
+        {
+            "WorkerID": 19,
+            "WorkerCode": "134691",
+            "WorkerDescription": "NADEEM HUSSAIN",
+            "CheckedPcs": 7,
+            "TotalFaults": 1,
+            "TodayDHU": 14.29
+        },
+        {
+            "WorkerID": 4,
+            "WorkerCode": "150275",
+            "WorkerDescription": "M.Qasim",
+            "CheckedPcs": 7,
+            "TotalFaults": 1,
+            "TodayDHU": 14.29
+        },
+        {
+            "WorkerID": 203,
+            "WorkerCode": "151897",
+            "WorkerDescription": "ALLAH WASIYA RASHEED",
+            "CheckedPcs": 7,
+            "TotalFaults": 1,
+            "TodayDHU": 14.29
+        },
+        {
+            "WorkerID": 30,
+            "WorkerCode": "134747",
+            "WorkerDescription": "SHARAFAT ALI",
+            "CheckedPcs": 7,
+            "TotalFaults": 1,
+            "TodayDHU": 14.29
+        },
+        {
+            "WorkerID": 9,
+            "WorkerCode": "134761",
+            "WorkerDescription": "Saleem Akhtar",
+            "CheckedPcs": 14,
+            "TotalFaults": 2,
+            "TodayDHU": 14.29
+        },
+        {
+            "WorkerID": 1,
+            "WorkerCode": "155192",
+            "WorkerDescription": "Anjum Charagh",
+            "CheckedPcs": 7,
+            "TotalFaults": 1,
+            "TodayDHU": 14.29
+        },
+        {
+            "WorkerID": 34,
+            "WorkerCode": "134754",
+            "WorkerDescription": "MUHAMMAD SABIR",
+            "CheckedPcs": 14,
+            "TotalFaults": 1,
+            "TodayDHU": 7.14
+        },
+        {
+            "WorkerID": 11,
+            "WorkerCode": "134751",
+            "WorkerDescription": "M.Zohaib",
+            "CheckedPcs": 7,
+            "TotalFaults": 0,
+            "TodayDHU": 0
+        }
+    ]
+}

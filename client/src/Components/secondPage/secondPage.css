@@ -1,0 +1,158 @@
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+.sfirstContainer{
+    height: 55%;
+    box-shadow: 0px 0px 1px 1px black;
+    width: 40%;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.sfNumberContainer{
+    height: 30%;
+    width: 33.3%;
+    box-shadow: 0px 0px 1px 1px black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sfNumberInner{
+    width: 95%;
+    height: 95%;
+}
+.sfnumberHeader{
+    background-color: #7F4935;
+    color: white;
+    height: 35%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sfNumberBottom{
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+.sfPieContainer{
+    height: 70%;
+    box-shadow: 0px 0px 1px 1px black;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sfPidContainerInner{
+    display: flex;
+    flex-direction: column;
+    width: 99%;
+    height: 96%;
+}
+.sfPieHeader{
+    height: 15%;
+    background-color: #7F4935;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sfPieChart{
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sSecondContainer{
+    height: 55%;
+    box-shadow: 0px 0px 1px 1px black;
+    width: 30%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ssInnerContainer{
+    width: 98%;
+    height: 98.5%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.ssHeader{
+    height: 10%;
+    background-color: #7F4935;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.stackedChatContainer{
+    height: 90%;
+}
+.sThirdContainer{
+    height: 55%;
+    box-shadow: 0px 0px 1px 1px black;
+    width: 30%;
+    border-radius: 10px;
+}
+.sFourthContaier{
+    height: 45%;
+    box-shadow: 0px 0px 1px 1px black;
+    width: 70%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sfourInner{
+    width: 99.3%;
+    height: 98%;
+    display: flex;
+    flex-direction: column;
+}
+.sfourHeader{
+    height: 10%;
+    background-color: #7F4935;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sfoutChartContainer{
+    height: 90%;
+    width: 100%;
+}
+.sFiveContainer{
+    height: 45%;
+    box-shadow: 0px 0px 1px 1px black;
+    width: 30%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
