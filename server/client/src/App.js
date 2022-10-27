@@ -27,10 +27,12 @@ function App() {
   //   faultWise:''
   // })
 
+
+
   const getData = async (lineID, sectionID) => {
-    setloading(true)
+      setloading(true)
     try {
-      const response = await axios.get(`http://localhost:5003/api/lineSectionWise?lineID=${params.lineID}&&sectionID=${params.sectionID}`)
+      const response = await axios.get(`${process.env.REACT_APP_API}?lineID=${params.lineID}&&sectionID=${params.sectionID}`)
       setdata(response.data)
       setloading(false)
     } catch (error) {
@@ -39,13 +41,28 @@ function App() {
     }
   }
 
+  // const getrefData = async (lineID, sectionID) => {
+  //   try {
+  //     const response = await axios.get(`http://localhost:5003/api/lineSectionWise?lineID=${params.lineID}&&sectionID=${params.sectionID}`)
+  //     setdata(response.data)    
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
   useEffect(() => {
       getData(params.lineID, params.sectionID)
+      // const timer = window.setInterval(()=>{
+      //   getrefData(params.lineID, params.sectionID)
+      //   console.log("refreshrun");
+      // },10000)
+      // return clearInterval(timer)
   }, [])
 
   useEffect(() => {
     const interval = window.setInterval(() => {
       setswap(!swap)
+      getData(params.lineID, params.sectionID)
     }, 5000)
 
     return () => {
@@ -72,7 +89,7 @@ function App() {
 
   return (
     <>
-      {/* <div className='App' >
+      <div className='App' >
         {swap ? 
         <FirstPage 
         params={params} 
@@ -82,14 +99,16 @@ function App() {
         faultWise={data.FaultPercentageWise} /> 
         : 
         <SecondPage
+        params={params}
         InlineFlagStatus = {data.InlineFlagStatus}
         InlineDhuCpTf = {data.InlineDhuCpTf}
         WorkerWiseFlagRatio = {data.WorkerWiseFlagRatio}
         MachineWiseFlagRatio = {data.MachineWiseFlagRatio}
         OprationWiseFaultRatio = {data.OprationWiseFaultRatio}
         TopBestAndWordWorkers = {data.TopBestAndWordWorkers}
-         />}</div> */}
-      <div className='App' >
+         />
+        }</div>
+      {/* <div className='App' >
       <SecondPage
         InlineFlagStatus = {data.InlineFlagStatus}
         InlineDhuCpTf = {data.InlineDhuCpTf}
@@ -98,7 +117,7 @@ function App() {
         OprationWiseFaultRatio = {data.OprationWiseFaultRatio}
         TopBestAndWordWorkers = {data.TopBestAndWordWorkers}
          />
-      </div>
+      </div> */}
 
     </>
   );

@@ -18,10 +18,10 @@ const FirstPage = ({ dhu, topFaultyOperations, defectedRatio, faultWise, params 
     })
 
     const fw = faultWise.map((item, index) => {
-        return { FaultDescription: item.FaultDescription.slice(0,20), FaultPercentage: item.FaultPercentage, fp:`${Math.round(item.FaultPercentage)}%` }
+        return { FaultDescription: item.FaultDescription.slice(0, 15), FaultPercentage: item.FaultPercentage, fp: `${Math.round(item.FaultPercentage)}%` }
     })
 
-    console.log(fw);
+    // console.log(fw);
 
     useEffect(() => {
         // const location = new URLSearchParams(window.locaion.search);
@@ -43,10 +43,17 @@ const FirstPage = ({ dhu, topFaultyOperations, defectedRatio, faultWise, params 
                             <div className="boxBottom">
                                 <ResponsiveContainer width='100%' height='100%' >
                                     <PieChart width='100%' height='100%'>
-                                        <Pie data={dr} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius="80%" label >
+                                        <Legend
+                                            layout='vertical'
+                                            align='right'
+                                            iconType="circle"
+                                            iconSize={10}
+                                            verticalAlign='middle'
+                                        />
+                                        <Pie data={dr} fontSize={25} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius="80%" label >
                                             {
                                                 dr.map((entry, index) => (
-                                                    <Cell key={`cell-${index}`} fill={color(index, dr.length)} strokeWidth={0} />
+                                                    <Cell key={`cell-${index}`} fill={color(index, dr.length, 200)} strokeWidth={0} />
                                                 ))
                                             }
                                         </Pie>
@@ -67,7 +74,7 @@ const FirstPage = ({ dhu, topFaultyOperations, defectedRatio, faultWise, params 
                                         <Tooltip />
                                         {/* <Legend /> */}
                                         <Bar dataKey="TotalFaults" >
-                                            <LabelList dataKey='TotalFaults' position='insideTop' fill='black'/>
+                                            <LabelList dataKey='TotalFaults' fontSize={25} position='insideTop' fill='black' />
                                             {
                                                 faultyOperations.map((entry, index) => (
                                                     <Cell key={`cell-${index}`} fill={color(index, faultyOperations.length)} strokeWidth={0} />
@@ -93,14 +100,14 @@ const FirstPage = ({ dhu, topFaultyOperations, defectedRatio, faultWise, params 
                                     <BarChart width='100%' height='100%' data={fw} >
                                         {/* <CartesianGrid strokeDasharray="3 3" /> */}
                                         <XAxis dataKey="FaultDescription" axisLine={false} tickLine={false} >
-                                        <Label value="Fault Description" offset={0} position="insideBottom" />
+                                            <Label offset={0} position="insideBottom" />
                                         </XAxis>
                                         {/* <YAxis /> */}
                                         <Tooltip />
                                         {/* <Legend /> */}
                                         <Bar dataKey="FaultPercentage"
                                         >
-                                            <LabelList dataKey='fp' position='insideTop' fill='black' />
+                                            <LabelList dataKey='fp' fontSize={25} position='top' fill='black' />
 
                                             {
                                                 fw.map((entry, index) => (

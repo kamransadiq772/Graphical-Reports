@@ -6,6 +6,7 @@ import color from '../helper/color'
 import data from '../data'
 
 const SecondPage = ({
+    params,
     InlineFlagStatus,
     InlineDhuCpTf,
     WorkerWiseFlagRatio,
@@ -14,7 +15,39 @@ const SecondPage = ({
     TopBestAndWordWorkers
 }) => {
 
+    const renderLegend = (props) => {
+        const { payload } = props;
+        // console.log("prop@@", props);
+        return (
+            <ul>
+                {
+                    payload.map((entry, index) => (
+                        <li key={`item-${index}`} style={{color:entry.payload.RoundColor, fontSize:'12px'}} >{entry.payload.RoundColor}</li>
+                    ))
+                }
+            </ul>
+        );
+    };
+
+    const CustomLabel = (props) => {
+        const { x, y, fill, value, postFix } = props
+        return <text
+            x={x}
+            y={y}
+            dy={30}
+            dx={7}
+            fontSize='16'
+            fill='#222'
+            textAnchor='right'
+        >
+            {value === 0 ? "" : value}
+        </text>
+    }
+
     const data1 = []
+
+    const ifs = InlineFlagStatus.map((item,index)=>({ value: item.RoundColor} ))
+    // console.log(ifs);
 
     const wwfg = WorkerWiseFlagRatio.reduce((pre, cur, index, arr) => {
         const dup = pre.find(i => i.WorkerID === cur.WorkerID)
@@ -54,10 +87,13 @@ const SecondPage = ({
         ]
     }, [])
 
+    const tbaww = TopBestAndWordWorkers.map((item, index) => ({ ...item, DhuPercent: `${item.TodayDHU}%` }))
+    // console.log(tbaww);
+
     return (
         <div className='container'>
             <div className="upperContainer">
-                <div className="upperContainerInner">Endline Line 3 Section Assembly 1</div>
+                <div className="upperContainerInner">Endline Line {params.lineID} Section Assembly {params.sectionID}</div>
             </div>
             <div className="bottomContainer">
                 <div className="bottomInner">
@@ -86,14 +122,21 @@ const SecondPage = ({
                                 <div className="sfPieHeader">Inline Flag Status</div>
                                 <div className="sfPieChart">
                                     <ResponsiveContainer>
-                                        <PieChart width='100%' height='100%'>
-                                            <Label fill='black' />
-                                            <Legend layout='vertical' align='right' iconType="circle" iconSize={10} verticalAlign='middle' margin={{top: 0, left: 0, right: 0, bottom: 0}}>
-                                            </Legend>
-                                            <Pie data={InlineFlagStatus} dataKey="RoundTotal" nameKey="name" cx="50%" cy="50%" outerRadius="80%" label stroke='none' >
+                                        <PieChart width='100%' height='100%' data={InlineFlagStatus}>
+                                            <Label fill='black' fontSize={25} />
+                                            <Legend
+                                                layout='vertical'
+                                                align='right'
+                                                iconType="circle"
+                                                iconSize={10}
+                                                verticalAlign='middle'
+                                                // margin={{ top: 0, left: 0, right: 0, bottom: 0 }}
+                                                content={renderLegend}
+                                            />
+                                            <Pie data={InlineFlagStatus} dataKey="RoundTotal" strokeWidth={0} nameKey="name" cx="50%" cy="50%" outerRadius="80%" label stroke='none' >
                                                 {
                                                     InlineFlagStatus.map((entry, index) => (
-                                                        <Cell key={`cell-${index}`} fill={entry.RoundColor==="RED"? "#FF0E15": entry.RoundColor==="GREEN"? "#2D8956": entry.RoundColor==="YELLOW"? "#EAC93B": "blue" } />
+                                                        <Cell fontSize={20} key={`cell-${index}`} fill={entry.RoundColor === "RED" ? "#FF0E15" : entry.RoundColor === "GREEN" ? "#2D8956" : entry.RoundColor === "YELLOW" ? "#EAC93B" : "blue"} />
                                                     ))
                                                 }
                                             </Pie>
@@ -109,22 +152,25 @@ const SecondPage = ({
                             <div className="stackedChatContainer">
                                 <ResponsiveContainer width="100%" height="100%">
                                     <BarChart width="100%" height="100%" data={wwfg} >
-                                        <Legend verticalAlign='top'  iconType="circle" iconSize={10} height={5} align='left' wrapperStyle={{fontSize:"12px",textAlign:'justify'}} />
+                                        <Legend verticalAlign='top' iconType="circle" iconSize={10} height={5} align='left' wrapperStyle={{ fontSize: "12px", textAlign: 'justify' }} />
                                         <XAxis textAnchor='start' height={50} tickMargin={0} interval={0} dataKey="WorkerCode" angle="90" scale="auto" minTickGap={0}  >
                                         </XAxis>
                                         <Tooltip />
                                         {/* <YAxis /> */}
-                                        <Bar dataKey="RED" stackId="a" fill="#FF0E15" label>
-                                            {/* <LabelList position="center" /> */}
+                                        <Bar dataKey="RED" stackId="a" fill="#FF0E15" >
+                                            <LabelList dataKey="RED" fontSize={25} position="center" content={<CustomLabel />} />
                                         </Bar>
-                                        <Bar dataKey="BLUE" stackId="a" fill="blue" label>
-                                            {/* <LabelList position="center" /> */}
+                                        <Bar dataKey="BLUE" stackId="a" fill="blue" >
+                                            <LabelList dataKey="BLUE" fontSize={25} position="center" content={<CustomLabel />} />
+
+
                                         </Bar>
-                                        <Bar dataKey="GREEN" stackId="a" fill="#2D8956" label>
-                                            {/* <LabelList position="center" /> */}
+                                        <Bar dataKey="GREEN" stackId="a" fill="#2D8956" >
+                                            <LabelList dataKey="GREEN" position="center" content={<CustomLabel />} />
+
                                         </Bar>
-                                        <Bar dataKey="YELLOW" stackId="a" fill="#EAC93B" label>
-                                            {/* <LabelList position="center" /> */}
+                                        <Bar dataKey="YELLOW" stackId="a" fill="#EAC93B" >
+                                            <LabelList dataKey="YELLOW" position="center" content={<CustomLabel />} />
                                         </Bar>
                                     </BarChart>
                                 </ResponsiveContainer>
@@ -138,21 +184,22 @@ const SecondPage = ({
                                 <ResponsiveContainer width="100%" height="100%">
                                     <BarChart width='100%' height='100%' data={mwfg} >
                                         {/* <CartesianGrid /> */}
+                                        <Legend verticalAlign='top' iconType="circle" iconSize={10} height={5} align='left' wrapperStyle={{ fontSize: "12px", textAlign: 'justify' }} />
                                         <Tooltip />
-                                        <XAxis textAnchor='start' height={30} tickMargin={0} interval={0} dataKey="MachineCode" angle="90" scale="auto" minTickGap={0} />
+                                        <XAxis textAnchor='start' height={50} tickMargin={0} interval={0} dataKey="MachineCode" angle="90" scale="auto" minTickGap={0} />
                                         {/* <YAxis /> */}
                                         <Legend wrapperStyle={{ top: 0 }} />
                                         <Bar dataKey="RED" stackId="a" fill="#FF0E15" >
-                                            {/* <LabelList position="center" /> */}
+                                            <LabelList dataKey="RED" position="center" content={<CustomLabel />} />
                                         </Bar>
                                         <Bar dataKey="GREEN" stackId="a" fill="#2D8956">
-                                            {/* <LabelList position="center" /> */}
+                                            <LabelList dataKey="GREEN" position="center" content={<CustomLabel />} />
                                         </Bar>
                                         <Bar dataKey="BLUE" stackId="a" fill="blue" >
-                                            {/* <LabelList position="center" /> */}
+                                            <LabelList dataKey="BLUE" position="center" content={<CustomLabel />} />
                                         </Bar>
                                         <Bar dataKey="YELLOW" stackId="a" fill="#EAC93B" >
-                                            {/* <LabelList position="center" /> */}
+                                            <LabelList dataKey="YELLOW" position="center" content={<CustomLabel />} />
                                         </Bar>
                                     </BarChart>
                                 </ResponsiveContainer>
@@ -164,17 +211,17 @@ const SecondPage = ({
                             <div className="sfourHeader">Top Best & Worst Workers</div>
                             <div className="sfoutChartContainer">
                                 <ResponsiveContainer width='100%' height='100%'>
-                                    <BarChart width='100%' height='100%' data={TopBestAndWordWorkers}>
+                                    <BarChart width='100%' height='100%' data={tbaww}>
                                         {/* <CartesianGrid strokeDasharray="3 3" /> */}
-                                        <XAxis dataKey="WorkerCode" height={60} angle="90" textAnchor='start' interval={0}/>
+                                        <XAxis dataKey="WorkerCode" height={60} angle="90" textAnchor='start' interval={0} />
                                         {/* <YAxis /> */}
                                         <Tooltip />
                                         {/* <Legend /> */}
                                         <Bar dataKey="TodayDHU" fill="#8884d8" markerHeight="40%" >
-                                            <LabelList dataKey='TodayDHU' position='top' />
+                                            <LabelList dataKey='DhuPercent' fontSize={20} position='top' />
                                             {
-                                                TopBestAndWordWorkers.map((item,index)=>(
-                                                    <Cell key={index} fill={color(index,TopBestAndWordWorkers.length)}/>
+                                                tbaww.map((item, index) => (
+                                                    <Cell key={index} fill={color(index, tbaww.length)} />
                                                 ))
                                             }
                                         </Bar>
@@ -186,20 +233,20 @@ const SecondPage = ({
                     <div className="sFiveContainer">
                         <div className="sfourInner"  >
                             <div className="sfourHeader">Operations Wise Fault Ratio</div>
-                            <div className="sfoutChartContainer" style={{overflowX:'scroll',overflowY:'hidden'}}>
+                            <div className="sfoutChartContainer" style={{ overflowX: 'scroll', overflowY: 'hidden' }}>
                                 <ResponsiveContainer width='200%' height='100%'>
                                     <BarChart width='100%' height='100%' data={OprationWiseFaultRatio} >
                                         {/* <CartesianGrid strokeDasharray="3 3" /> */}
-                                        <Legend align='left' verticalAlign='top' />
-                                        <XAxis dataKey="OperationDescription" tick={{fontSize: 12}} textAnchor='start' height={50} tickMargin={0} interval={0} angle="90" scale="auto" minTickGap={0} />
+                                        <Legend verticalAlign='top' iconType="circle" iconSize={10} height={5} align='left' wrapperStyle={{ fontSize: "12px", textAlign: 'justify' }} />
+                                        <XAxis dataKey="OperationDescription" tick={{ fontSize: 12 }} textAnchor='start' height={50} tickMargin={0} interval={0} angle="90" scale="auto" minTickGap={0} />
                                         {/* <YAxis /> */}
                                         <Tooltip />
                                         {/* <Legend /> */}
-                                        <Bar dataKey="CheckedPcs" fill="#2D8956" barSize={20}>
-                                            <LabelList dataKey='pv' position='top' />
+                                        <Bar dataKey="CheckedPcs" fill="#2D8956" barSize={20} >
+                                            <LabelList dataKey='CheckedPcs' fontSize={25} position='top' />
                                         </Bar>
                                         <Bar dataKey="DefectedPcs" fill="#FF0E15" barSize={20} >
-                                            <LabelList dataKey='uv' position='top' />
+                                            <LabelList dataKey='DefectedPcs' fontSize={25} position='top' />
                                         </Bar>
                                     </BarChart>
                                 </ResponsiveContainer>
