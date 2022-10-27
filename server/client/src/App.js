@@ -63,7 +63,7 @@ function App() {
     const interval = window.setInterval(() => {
       setswap(!swap)
       getData(params.lineID, params.sectionID)
-    }, 5000)
+    }, 30000)
 
     return () => {
       clearInterval(interval)

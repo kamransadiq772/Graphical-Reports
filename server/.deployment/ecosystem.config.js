@@ -2,9 +2,7 @@ module.exports = {
     apps: [
         {
             name: 'backend',
-            script: 'app.js',
-            instances: 4,
-            Exec_mode: 'cluster',
+            script: './app.js',
             env_development: {
                 NODE_ENV: 'development',
                 PORT: 5003,

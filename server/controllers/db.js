@@ -22,8 +22,8 @@ if (env == 'development') {
     },
   });
 } else {
-  sequelize = new Sequelize("SooperwizerQA_Azquard", "sa", "wimetrix", {
-    host: "localhost",
+  sequelize = new Sequelize("SooperwizerQA", "sa", "Qwer1234", {
+    host: "SRVSQMSAPP",
     dialect: "mssql",
     logging: false,
     dialectOptions: {
