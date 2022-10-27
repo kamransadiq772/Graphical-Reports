@@ -1,0 +1,1 @@
+cd .. && pm2 startOrReload ./.deployment/ecosystem.config.js

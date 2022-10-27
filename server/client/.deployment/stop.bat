@@ -1,0 +1,1 @@
+start.bat && pm2 delete frontend 
