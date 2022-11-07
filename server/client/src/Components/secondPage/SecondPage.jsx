@@ -12,7 +12,9 @@ const SecondPage = ({
     WorkerWiseFlagRatio,
     MachineWiseFlagRatio,
     OprationWiseFaultRatio,
-    TopBestAndWordWorkers
+    TopBestAndWordWorkers,
+    line,
+    section
 }) => {
 
     const renderLegend = (props) => {
@@ -93,7 +95,7 @@ const SecondPage = ({
     return (
         <div className='container'>
             <div className="upperContainer">
-                <div className="upperContainerInner">Endline Line {params.lineID} Section Assembly {params.sectionID}</div>
+                <div className="upperContainerInner">Inline {line} Section {section}</div>
             </div>
             <div className="bottomContainer">
                 <div className="bottomInner">
@@ -150,7 +152,7 @@ const SecondPage = ({
                         <div className="ssInnerContainer"  >
                             <div className="ssHeader">Worker Wise Flag Ratio</div>
                             <div className="stackedChatContainer">
-                                <ResponsiveContainer width="100%" height="100%">
+                                <ResponsiveContainer width={wwfg.length * 35} height="100%">
                                     <BarChart width="100%" height="100%" data={wwfg} >
                                         <Legend verticalAlign='top' iconType="circle" iconSize={10} height={5} align='left' wrapperStyle={{ fontSize: "12px", textAlign: 'justify' }} />
                                         <XAxis textAnchor='start' height={50} tickMargin={0} interval={0} dataKey="WorkerCode" angle="90" scale="auto" minTickGap={0}  >
@@ -181,7 +183,7 @@ const SecondPage = ({
                         <div className="ssInnerContainer">
                             <div className="ssHeader">Machine Wise Flag Ratio</div>
                             <div className="stackedChatContainer">
-                                <ResponsiveContainer width="100%" height="100%">
+                                <ResponsiveContainer width={mwfg.length * 35} height="100%">
                                     <BarChart width='100%' height='100%' data={mwfg} >
                                         {/* <CartesianGrid /> */}
                                         <Legend verticalAlign='top' iconType="circle" iconSize={10} height={5} align='left' wrapperStyle={{ fontSize: "12px", textAlign: 'justify' }} />
@@ -210,7 +212,7 @@ const SecondPage = ({
                         <div className="sfourInner">
                             <div className="sfourHeader">Top Best & Worst Workers</div>
                             <div className="sfoutChartContainer">
-                                <ResponsiveContainer width='100%' height='100%'>
+                                <ResponsiveContainer width={tbaww.length * 70} height='100%'>
                                     <BarChart width='100%' height='100%' data={tbaww}>
                                         {/* <CartesianGrid strokeDasharray="3 3" /> */}
                                         <XAxis dataKey="WorkerCode" height={60} angle="90" textAnchor='start' interval={0} />
@@ -234,7 +236,7 @@ const SecondPage = ({
                         <div className="sfourInner"  >
                             <div className="sfourHeader">Operations Wise Fault Ratio</div>
                             <div className="sfoutChartContainer" style={{ overflowX: 'scroll', overflowY: 'hidden' }}>
-                                <ResponsiveContainer width='200%' height='100%'>
+                                <ResponsiveContainer width={OprationWiseFaultRatio.length * 60} height='100%'>
                                     <BarChart width='100%' height='100%' data={OprationWiseFaultRatio} >
                                         {/* <CartesianGrid strokeDasharray="3 3" /> */}
                                         <Legend verticalAlign='top' iconType="circle" iconSize={10} height={5} align='left' wrapperStyle={{ fontSize: "12px", textAlign: 'justify' }} />

@@ -4,7 +4,7 @@ import color from '../helper/color'
 import './fitst.css'
 import { ResponsiveContainer, Label, Cell, PieChart, Pie, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, LabelList, Brush } from 'recharts'
 
-const FirstPage = ({ dhu, topFaultyOperations, defectedRatio, faultWise, params }) => {
+const FirstPage = ({ dhu, topFaultyOperations, defectedRatio, faultWise, params, line, section }) => {
 
     const data = [
         { uv: 1, pv: 49 },
@@ -33,7 +33,7 @@ const FirstPage = ({ dhu, topFaultyOperations, defectedRatio, faultWise, params 
     return (
         <div className='container'>
             <div className="upperContainer">
-                <div className="upperContainerInner">Endline Line {params.lineID} Section Assembly {params.sectionID}</div>
+            <div className="upperContainerInner">Endline {line} Section {section}</div>
             </div>
             <div className="bottomContainer">
                 <div className="bottomInner">

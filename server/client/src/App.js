@@ -96,7 +96,10 @@ function App() {
         dhu={data.TodayDHU} 
         topFaultyOperations={data.Top3FaultyOperations} 
         defectedRatio={data.TodayDefectRatio} 
-        faultWise={data.FaultPercentageWise} /> 
+        faultWise={data.FaultPercentageWise} 
+        line={data.line[0].LineDescription}
+        section={data.section[0].SectionDescription}
+        /> 
         : 
         <SecondPage
         params={params}
@@ -106,6 +109,8 @@ function App() {
         MachineWiseFlagRatio = {data.MachineWiseFlagRatio}
         OprationWiseFaultRatio = {data.OprationWiseFaultRatio}
         TopBestAndWordWorkers = {data.TopBestAndWordWorkers}
+        line={data.line[0].LineDescription}
+        section={data.section[0].SectionDescription}
          />
         }</div>
       {/* <div className='App' >

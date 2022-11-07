@@ -20,7 +20,7 @@ const get = async (req, res) => {
     );
     const TodayDHU = await db.sequelize.query(
       `select  isnull(CAST(CAST(SUM(TotalFaults) as float)/CAST(count(PieceID) as float) * 100.0 as decimal(10,2)),0) AS TodayDHU
-	  from [dbo].[vw_EndLineSession] where  --createdAtDate=cast(getdate() as date) and
+	  from [dbo].[vw_EndLineSession] where  createdAtDate=cast(getdate() as date) and
 	  LineID=:lineID and sectionID=:sectionID `,
       {
         replacements: { lineID, sectionID },
@@ -31,7 +31,7 @@ const get = async (req, res) => {
       `	select TOP 3 ISNULL(SUM(FaultCount),0) AS TotalFaults, OperationDescription from [dbo].[vw_EndLineSession] ES
 	  join [dbo].[vw_EndlineFaultLog] EFL
 	  on ES.EndLineSessionID= EFL.EndLineSessionID
-	  where --ES.createdAtDate = cast(getdate() as date) and
+	  where ES.createdAtDate = cast(getdate() as date) and
 	  LineID=:lineID and sectionID=:sectionID
 	  GROUP BY OperationDescription
 	  ORDER BY SUM(FaultCount) DESC`,
@@ -44,7 +44,7 @@ const get = async (req, res) => {
       `select ISNULL(SUM(TotalFaults),0) AS TotalFaults, count(PieceID) as CheckedPieces  from [dbo].[vw_EndLineSession] ES
 	  join [dbo].[vw_EndlineFaultLog] EFL
 	  on ES.EndLineSessionID= EFL.EndLineSessionID
-	  where --ES.createdAtDate = cast(getdate() as date) and
+	  where ES.createdAtDate = cast(getdate() as date) and
 	   LineID=:lineID and sectionID=:sectionID
 	  ORDER BY SUM(FaultCount) DESC`,
       {
@@ -53,9 +53,9 @@ const get = async (req, res) => {
       }
     );
     const FaultPercentageWise = await db.sequelize.query(
-      `SELECT top 8 FaultDescription,FaultPercetage as FaultPercentage,TotalFaults
-	  FROM [dbo].[Line_SectionWise_FaultPercentage]
-	  WHERE LineID=:lineID AND SectionID=:sectionID`,
+      ` SELECT  FaultDescription,FaultPercetage as FaultPercentage,TotalFaults
+          FROM [dbo].[Line_SectionWise_FaultPercentage] where FaultDate =cast(GETDATE() as date)
+      and  LineID=:lineID AND SectionID=:sectionID`,
       {
         replacements: { lineID, sectionID },
         type: db.sequelize.QueryTypes.SELECT,
@@ -66,7 +66,7 @@ const get = async (req, res) => {
 
     const InlineFlagStatus = await db.sequelize.query(
       `select RoundColor,count(*)RoundTotal from [dbo].[vw_InlineSession]
-      where -- CreatedAtDate=cast(getdate() as date) and
+      where  CreatedAtDate=cast(getdate() as date) and
       LineID=:lineID AND SectionID=:sectionID
       group by RoundColor`,
       {
@@ -78,7 +78,7 @@ const get = async (req, res) => {
     const InlineDhuCpTf = await db.sequelize.query(
       `select sum(CheckedPices)CheckedPcs,sum(TotalFaults)TotalFaults,isnull(CAST(CAST(SUM(TotalFaults) as float) /CAST(sum(CheckedPices) as float) * 100.0 as decimal(10,2)),0) AS TodayDHU
       from [dbo].[vw_InlineSession]
-       where -- CreatedAtDate=cast(getdate() as date) and
+       where  CreatedAtDate=cast(getdate() as date) and
        LineID=:lineID AND SectionID=:sectionID`,
       {
         replacements: { lineID, sectionID },
@@ -88,7 +88,7 @@ const get = async (req, res) => {
 
     const WorkerWiseFlagRatio = await db.sequelize.query(
       `select WorkerID,WorkerCode,WorkerDescription,RoundColor,count(*)RoundTotal from [dbo].[vw_InlineSession]
-      where -- CreatedAtDate=cast(getdate() as date) and
+      where  CreatedAtDate=cast(getdate() as date) and
       LineID=:lineID AND SectionID=:sectionID
       group by WorkerID,WorkerCode,WorkerDescription,RoundColor`,
       {
@@ -99,7 +99,7 @@ const get = async (req, res) => {
 
     const MachineWiseFlagRatio = await db.sequelize.query(
       `select MachineID,MachineCode,MachineDescription,RoundColor,count(*)RoundTotal from [dbo].[vw_InlineSession]
-      where -- CreatedAtDate=cast(getdate() as date) and
+      where  CreatedAtDate=cast(getdate() as date) and
       LineID=:lineID AND SectionID=:sectionID
       group by MachineID,MachineCode,MachineDescription,RoundColor`,
       {
@@ -111,7 +111,7 @@ const get = async (req, res) => {
     const OprationWiseFaultRatio = await db.sequelize.query(
       `select sum(CheckedPices)CheckedPcs,sum(DefectedPieces)DefectedPcs, OperationID,OperationCode,OperationDescription
       from [dbo].[vw_InlineSession]
-       where -- CreatedAtDate=cast(getdate() as date) and
+       where  CreatedAtDate=cast(getdate() as date) and
        LineID=:lineID AND SectionID=:sectionID
       group by  OperationID,OperationCode,OperationDescription`,
       {
@@ -123,7 +123,7 @@ const get = async (req, res) => {
     const TopBestAndWordWorkers = await db.sequelize.query(
       `select * from (select WorkerID,WorkerCode,WorkerDescription,sum(CheckedPices)CheckedPcs,sum(TotalFaults)TotalFaults,isnull(CAST(CAST(SUM(TotalFaults) as float) /CAST(sum(CheckedPices) as float) * 100.0 as decimal(10,2)),0) AS TodayDHU
       from [dbo].[vw_InlineSession]
-        where -- CreatedAtDate=cast(getdate() as date) and
+        where  CreatedAtDate=cast(getdate() as date) and
         LineID=:lineID AND SectionID=:sectionID
        group by WorkerID,WorkerCode,WorkerDescription) tab1 
        order by TodayDHU desc`,
