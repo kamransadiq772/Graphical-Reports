@@ -12,7 +12,12 @@ const FirstPage = ({ dhu, topFaultyOperations, defectedRatio, faultWise, params,
         { uv: 3, pv: 1 }
     ]
 
-    const faultyOperations = topFaultyOperations
+    const faultyOperations = topFaultyOperations.map((item, index) => {
+        return {
+            TotalFaults: item.TotalFaults,
+            OperationDescription: item.OperationDescription.slice(0, 15)+"..."
+        }
+    })
     const dr = Object.keys(defectedRatio[0]).map((item, index) => {
         return { name: item, value: defectedRatio[0][item] }
     })
@@ -29,11 +34,24 @@ const FirstPage = ({ dhu, topFaultyOperations, defectedRatio, faultWise, params,
         // console.log(location.get('sectionid'))
     }, [])
 
+    const renderLegend = (props) => {
+        const { payload } = props;
+        // console.log("prop@@", payload);
+        return (
+            <ul>
+                {
+                    payload.map((entry, index) => (
+                        <li key={`item-${index}`} style={{color:entry.color, fontSize:'14px', fontWeight:'600', marginRight:'10px'}} >{entry.payload.name}</li>
+                    ))
+                }
+            </ul>
+        );
+    };
 
     return (
         <div className='container'>
             <div className="upperContainer">
-            <div className="upperContainerInner">Endline {line} Section {section}</div>
+                <div className="upperContainerInner"><b>Endline:</b> {line} &emsp; <b>Section:</b> {section}</div>
             </div>
             <div className="bottomContainer">
                 <div className="bottomInner">
@@ -42,15 +60,25 @@ const FirstPage = ({ dhu, topFaultyOperations, defectedRatio, faultWise, params,
                             <div className="boxHeader">Total Defected Pieces Ratio</div>
                             <div className="boxBottom">
                                 <ResponsiveContainer width='100%' height='100%' >
-                                    <PieChart width='100%' height='100%'>
+                                    <PieChart width='100%' height='100%'
+                                    margin={{
+                                        top: 22,
+                                        right: 0,
+                                        left: 0,
+                                        bottom: 5
+                                      }}
+                                    >
                                         <Legend
                                             layout='vertical'
                                             align='right'
                                             iconType="circle"
-                                            iconSize={10}
+                                            iconSize={8}
                                             verticalAlign='middle'
+                                            fontSize={12}
+                                            margin={{ top: 0, left: 10, right: 10, bottom: 0 }}
+                                            content={renderLegend}
                                         />
-                                        <Pie data={dr} fontSize={25} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius="80%" label >
+                                        <Pie data={dr} fontSize={18} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius="80%" label >
                                             {
                                                 dr.map((entry, index) => (
                                                     <Cell key={`cell-${index}`} fill={color(index, dr.length, 200)} strokeWidth={0} />
@@ -67,17 +95,27 @@ const FirstPage = ({ dhu, topFaultyOperations, defectedRatio, faultWise, params,
                             <div className="boxHeader">Top Faulty Opertaions</div>
                             <div className="boxBottom">
                                 <ResponsiveContainer width='100%' height='100%'>
-                                    <BarChart width='100%' height='100%' data={faultyOperations} >
+                                    <BarChart 
+                                    width='100%' 
+                                    height='100%' 
+                                    data={faultyOperations} 
+                                    margin={{
+                                        top: 22,
+                                        right: 0,
+                                        left: 0,
+                                        bottom: 5
+                                      }}
+                                    >
                                         {/* <CartesianGrid strokeDasharray="3 3" /> */}
                                         <XAxis dataKey="OperationDescription" axisLine={false} tickLine={false} />
                                         {/* <YAxis /> */}
                                         <Tooltip />
                                         {/* <Legend /> */}
                                         <Bar dataKey="TotalFaults" >
-                                            <LabelList dataKey='TotalFaults' fontSize={25} position='insideTop' fill='black' />
+                                            <LabelList dataKey='TotalFaults' fontSize={22} position='top'  />
                                             {
                                                 faultyOperations.map((entry, index) => (
-                                                    <Cell key={`cell-${index}`} fill={color(index, faultyOperations.length)} strokeWidth={0} />
+                                                    <Cell  key={index} fill={color(index, faultyOperations.length)} />
                                                 ))
                                             }
                                         </Bar>
@@ -97,25 +135,31 @@ const FirstPage = ({ dhu, topFaultyOperations, defectedRatio, faultWise, params,
                             <div className="boxHeader">Fault Wise Breakdown</div>
                             <div className="boxBottom">
                                 <ResponsiveContainer width="100%" height='100%'>
-                                    <BarChart width='100%' height='100%' data={fw} >
-                                        {/* <CartesianGrid strokeDasharray="3 3" /> */}
-                                        <XAxis dataKey="FaultDescription" axisLine={false} tickLine={false} >
+                                    <BarChart 
+                                    width='100%' 
+                                    height='100%' 
+                                    data={fw} 
+                                    margin={{
+                                        top: 20,
+                                        right: 0,
+                                        left: 0,
+                                        bottom: 5
+                                      }}
+                                    >
+                                        {/* <XAxis dataKey="FaultDescription" axisLine={false} tickLine={false} >
                                             <Label offset={0} position="insideBottom" />
-                                        </XAxis>
-                                        {/* <YAxis /> */}
+                                        </XAxis> */}
+                                        <XAxis dataKey="FaultDescription" height={70} angle="27" textAnchor='start' interval={0} />
                                         <Tooltip />
-                                        {/* <Legend /> */}
                                         <Bar dataKey="FaultPercentage"
                                         >
-                                            <LabelList dataKey='fp' fontSize={25} position='top' fill='black' />
-
+                                            <LabelList dataKey='fp' fontSize={22} position='top'  />
                                             {
                                                 fw.map((entry, index) => (
-                                                    <Cell key={`cell-${index}`} fill={color(index, fw.length)} />
+                                                    <Cell key={index} fill={color(index, fw.length)} />
                                                 ))
                                             }
                                         </Bar>
-                                        {/* <Brush height={30} /> */}
                                     </BarChart>
                                 </ResponsiveContainer>
                             </div>

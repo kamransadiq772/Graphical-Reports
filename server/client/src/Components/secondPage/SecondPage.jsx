@@ -24,7 +24,7 @@ const SecondPage = ({
             <ul>
                 {
                     payload.map((entry, index) => (
-                        <li key={`item-${index}`} style={{color:entry.payload.RoundColor, fontSize:'12px'}} >{entry.payload.RoundColor}</li>
+                        <li key={`item-${index}`} style={{color:entry.payload.RoundColor, fontSize:'14px', fontWeight:'600', marginRight:'10px'}} >{entry.payload.RoundColor}</li>
                     ))
                 }
             </ul>
@@ -37,7 +37,7 @@ const SecondPage = ({
             x={x}
             y={y}
             dy={30}
-            dx={7}
+            dx={12}
             fontSize='16'
             fill='#222'
             textAnchor='right'
@@ -51,8 +51,9 @@ const SecondPage = ({
     const ifs = InlineFlagStatus.map((item,index)=>({ value: item.RoundColor} ))
     // console.log(ifs);
 
-    const wwfg = WorkerWiseFlagRatio.reduce((pre, cur, index, arr) => {
+    const wwfg = WorkerWiseFlagRatio.reduce((pre, cur) => {
         const dup = pre.find(i => i.WorkerID === cur.WorkerID)
+
         if (dup) {
             dup[cur.RoundColor] = dup[cur.RoundColor] + 1;
             return pre;
@@ -61,14 +62,14 @@ const SecondPage = ({
             ...pre,
             {
                 ...cur,
-                RED: cur.RoundColor === 'RED' ? 1 : 0,
-                GREEN: cur.RoundColor === 'GREEN' ? 1 : 0,
-                YELLOW: cur.RoundColor === 'YELLOW' ? 1 : 0,
-                BLUE: cur.RoundColor === 'BLUE' ? 1 : 0,
+                RED: cur.RoundColor === 'RED' ? cur.RoundTotal : 0,
+                GREEN: cur.RoundColor === 'GREEN' ? cur.RoundTotal : 0,
+                YELLOW: cur.RoundColor === 'YELLOW' ? cur.RoundTotal : 0,
+                BLUE: cur.RoundColor === 'BLUE' ? cur.RoundTotal : 0,
             }
         ]
     }, [])
-    // console.log(wwfg);
+    console.log("wwfg",wwfg);
 
 
     const mwfg = MachineWiseFlagRatio.reduce((pre, cur) => {
@@ -81,21 +82,23 @@ const SecondPage = ({
             ...pre,
             {
                 ...cur,
-                RED: cur.RoundColor === 'RED' ? 1 : 0,
-                GREEN: cur.RoundColor === 'GREEN' ? 1 : 0,
-                YELLOW: cur.RoundColor === 'YELLOW' ? 1 : 0,
-                BLUE: cur.RoundColor === 'BLUE' ? 1 : 0,
+                RED: cur.RoundColor === 'RED' ? cur.RoundTotal : 0,
+                GREEN: cur.RoundColor === 'GREEN' ? cur.RoundTotal : 0,
+                YELLOW: cur.RoundColor === 'YELLOW' ? cur.RoundTotal : 0,
+                BLUE: cur.RoundColor === 'BLUE' ? cur.RoundTotal : 0,
             }
         ]
     }, [])
+    // console.log({mwfg});
 
     const tbaww = TopBestAndWordWorkers.map((item, index) => ({ ...item, DhuPercent: `${item.TodayDHU}%` }))
-    // console.log(tbaww);
+    // console.log("tbaww", tbaww);
+
 
     return (
         <div className='container'>
             <div className="upperContainer">
-                <div className="upperContainerInner">Inline {line} Section {section}</div>
+                <div className="upperContainerInner"><b>Inline:</b> {line} &emsp; <b>Section:</b> {section}</div>
             </div>
             <div className="bottomContainer">
                 <div className="bottomInner">
@@ -124,7 +127,17 @@ const SecondPage = ({
                                 <div className="sfPieHeader">Inline Flag Status</div>
                                 <div className="sfPieChart">
                                     <ResponsiveContainer>
-                                        <PieChart width='100%' height='100%' data={InlineFlagStatus}>
+                                        <PieChart 
+                                        width='100%' 
+                                        height='100%' 
+                                        data={InlineFlagStatus}
+                                        margin={{
+                                            top: 20,
+                                            right: 0,
+                                            left: 0,
+                                            bottom: 5
+                                          }}
+                                        >
                                             <Label fill='black' fontSize={25} />
                                             <Legend
                                                 layout='vertical'
@@ -132,13 +145,13 @@ const SecondPage = ({
                                                 iconType="circle"
                                                 iconSize={10}
                                                 verticalAlign='middle'
-                                                // margin={{ top: 0, left: 0, right: 0, bottom: 0 }}
+                                                // margin={{ top: 0, left: 0, right: 20, bottom: 0 }}
                                                 content={renderLegend}
                                             />
                                             <Pie data={InlineFlagStatus} dataKey="RoundTotal" strokeWidth={0} nameKey="name" cx="50%" cy="50%" outerRadius="80%" label stroke='none' >
                                                 {
                                                     InlineFlagStatus.map((entry, index) => (
-                                                        <Cell fontSize={20} key={`cell-${index}`} fill={entry.RoundColor === "RED" ? "#FF0E15" : entry.RoundColor === "GREEN" ? "#2D8956" : entry.RoundColor === "YELLOW" ? "#EAC93B" : "blue"} />
+                                                        <Cell fontSize={16} key={`cell-${index}`} fill={entry.RoundColor === "RED" ? "#FF0E15" : entry.RoundColor === "GREEN" ? "#2D8956" : entry.RoundColor === "YELLOW" ? "#EAC93B" : "blue"} />
                                                     ))
                                                 }
                                             </Pie>
@@ -152,14 +165,23 @@ const SecondPage = ({
                         <div className="ssInnerContainer"  >
                             <div className="ssHeader">Worker Wise Flag Ratio</div>
                             <div className="stackedChatContainer">
-                                <ResponsiveContainer width={wwfg.length * 35} height="100%">
-                                    <BarChart width="100%" height="100%" data={wwfg} >
-                                        <Legend verticalAlign='top' iconType="circle" iconSize={10} height={5} align='left' wrapperStyle={{ fontSize: "12px", textAlign: 'justify' }} />
-                                        <XAxis textAnchor='start' height={50} tickMargin={0} interval={0} dataKey="WorkerCode" angle="90" scale="auto" minTickGap={0}  >
+                                <ResponsiveContainer width={wwfg.length * 50} height="100%">
+                                    <BarChart 
+                                    width="100%" 
+                                    height="100%" 
+                                    data={wwfg}
+                                    margin={{
+                                        top: 20,
+                                        right: 0,
+                                        left: 0,
+                                        bottom: 5
+                                      }}
+                                    >
+                                        <Legend verticalAlign='top' iconType="circle" iconSize={10} height={5} align='left' wrapperStyle={{ fontSize: "12px", textAlign: 'justify',  position:'absolute', top: 5 }} />
+                                        <XAxis textAnchor='start' height={90} tickMargin={0} interval={0} dataKey="WorkerCode" angle="90" scale="auto" minTickGap={0}  >
                                         </XAxis>
                                         <Tooltip />
-                                        {/* <YAxis /> */}
-                                        <Bar dataKey="RED" stackId="a" fill="#FF0E15" >
+                                        <Bar dataKey="RED" stackId="a" fill="#FF0E15"  >
                                             <LabelList dataKey="RED" fontSize={25} position="center" content={<CustomLabel />} />
                                         </Bar>
                                         <Bar dataKey="BLUE" stackId="a" fill="blue" >
@@ -183,14 +205,23 @@ const SecondPage = ({
                         <div className="ssInnerContainer">
                             <div className="ssHeader">Machine Wise Flag Ratio</div>
                             <div className="stackedChatContainer">
-                                <ResponsiveContainer width={mwfg.length * 35} height="100%">
-                                    <BarChart width='100%' height='100%' data={mwfg} >
+                                <ResponsiveContainer width={mwfg.length * 50} height="100%" >
+                                    <BarChart 
+                                    width='100%'
+                                    height='100%' 
+                                    data={mwfg} 
+                                    margin={{
+                                        top: 20,
+                                        right: 0,
+                                        left: 0,
+                                        bottom: 5
+                                      }}
+                                    >
                                         {/* <CartesianGrid /> */}
-                                        <Legend verticalAlign='top' iconType="circle" iconSize={10} height={5} align='left' wrapperStyle={{ fontSize: "12px", textAlign: 'justify' }} />
+                                        <Legend verticalAlign='top' iconType="circle" iconSize={10} height={5} align='left' wrapperStyle={{ fontSize: "12px", textAlign: 'justify', position:'absolute', top: 5 }} />
                                         <Tooltip />
-                                        <XAxis textAnchor='start' height={50} tickMargin={0} interval={0} dataKey="MachineCode" angle="90" scale="auto" minTickGap={0} />
-                                        {/* <YAxis /> */}
-                                        <Legend wrapperStyle={{ top: 0 }} />
+                                        <XAxis textAnchor='start' height={90} tickMargin={0} interval={0} dataKey="MachineCode" angle="90" scale="auto" minTickGap={0} />
+                                        {/* <CartesianGrid strokeDasharray="3 3" /> */}
                                         <Bar dataKey="RED" stackId="a" fill="#FF0E15" >
                                             <LabelList dataKey="RED" position="center" content={<CustomLabel />} />
                                         </Bar>
@@ -212,15 +243,22 @@ const SecondPage = ({
                         <div className="sfourInner">
                             <div className="sfourHeader">Top Best & Worst Workers</div>
                             <div className="sfoutChartContainer">
-                                <ResponsiveContainer width={tbaww.length * 70} height='100%'>
-                                    <BarChart width='100%' height='100%' data={tbaww}>
-                                        {/* <CartesianGrid strokeDasharray="3 3" /> */}
-                                        <XAxis dataKey="WorkerCode" height={60} angle="90" textAnchor='start' interval={0} />
-                                        {/* <YAxis /> */}
+                                <ResponsiveContainer width={tbaww.length * 70} height='96%'>
+                                    <BarChart 
+                                    width='100%' 
+                                    height='100%' 
+                                    data={tbaww}
+                                    margin={{
+                                        top: 20,
+                                        right: 0,
+                                        left: 0,
+                                        bottom: 5
+                                      }}
+                                    >
+                                        <XAxis dataKey="WorkerCode" height={70} angle="90" textAnchor='start' interval={0} />
                                         <Tooltip />
-                                        {/* <Legend /> */}
-                                        <Bar dataKey="TodayDHU" fill="#8884d8" markerHeight="40%" >
-                                            <LabelList dataKey='DhuPercent' fontSize={20} position='top' />
+                                        <Bar dataKey="TodayDHU" fill="#8884d8" markerHeight="40%" minPointSize={4}>
+                                            <LabelList dataKey='DhuPercent' fontSize={16} position='top' />
                                             {
                                                 tbaww.map((item, index) => (
                                                     <Cell key={index} fill={color(index, tbaww.length)} />
@@ -236,19 +274,26 @@ const SecondPage = ({
                         <div className="sfourInner"  >
                             <div className="sfourHeader">Operations Wise Fault Ratio</div>
                             <div className="sfoutChartContainer" style={{ overflowX: 'scroll', overflowY: 'hidden' }}>
-                                <ResponsiveContainer width={OprationWiseFaultRatio.length * 60} height='100%'>
-                                    <BarChart width='100%' height='100%' data={OprationWiseFaultRatio} >
-                                        {/* <CartesianGrid strokeDasharray="3 3" /> */}
-                                        <Legend verticalAlign='top' iconType="circle" iconSize={10} height={5} align='left' wrapperStyle={{ fontSize: "12px", textAlign: 'justify' }} />
-                                        <XAxis dataKey="OperationDescription" tick={{ fontSize: 12 }} textAnchor='start' height={50} tickMargin={0} interval={0} angle="90" scale="auto" minTickGap={0} />
-                                        {/* <YAxis /> */}
+                                <ResponsiveContainer width={OprationWiseFaultRatio.length * 70} height='100%'>
+                                    <BarChart
+                                     width='100%'
+                                      height='100%'
+                                       data={OprationWiseFaultRatio} 
+                                       margin={{
+                                        top: 20,
+                                        right: 0,
+                                        left: 0,
+                                        bottom: 5
+                                      }}
+                                       >
+                                        <Legend verticalAlign='top' iconType="circle" iconSize={10} height={5} align='left' wrapperStyle={{ fontSize: "12px", textAlign: 'justify',  position:'absolute', top: 5 }} />
+                                        <XAxis dataKey="OperationDescription" tick={{ fontSize: 12 }} textAnchor='start' height={73} tickMargin={0} interval={0} angle="90" scale="auto" minTickGap={0} />
                                         <Tooltip />
-                                        {/* <Legend /> */}
-                                        <Bar dataKey="CheckedPcs" fill="#2D8956" barSize={20} >
-                                            <LabelList dataKey='CheckedPcs' fontSize={25} position='top' />
+                                        <Bar dataKey="CheckedPcs" fill="#2D8956" barSize={20} minPointSize={3}>
+                                            <LabelList dataKey='CheckedPcs' fontSize={16} position='top' />
                                         </Bar>
-                                        <Bar dataKey="DefectedPcs" fill="#FF0E15" barSize={20} >
-                                            <LabelList dataKey='DefectedPcs' fontSize={25} position='top' />
+                                        <Bar dataKey="DefectedPcs" fill="#FF0E15" barSize={20} minPointSize={3}>
+                                            <LabelList dataKey='DefectedPcs' fontSize={16} position='top' />
                                         </Bar>
                                     </BarChart>
                                 </ResponsiveContainer>

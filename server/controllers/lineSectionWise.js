@@ -41,12 +41,10 @@ const get = async (req, res) => {
       }
     );
     const TodayDefectRatio = await db.sequelize.query(
-      `select ISNULL(SUM(TotalFaults),0) AS TotalFaults, count(PieceID) as CheckedPieces  from [dbo].[vw_EndLineSession] ES
-	  join [dbo].[vw_EndlineFaultLog] EFL
-	  on ES.EndLineSessionID= EFL.EndLineSessionID
-	  where ES.createdAtDate = cast(getdate() as date) and
+      `select ISNULL(SUM(TotalFaults),0) AS TotalFaults, count(PieceID) as CheckedPieces  from  [dbo].[vw_EndLineSession] es
+      where ES.createdAtDate = cast(getdate() as date) and
 	   LineID=:lineID and sectionID=:sectionID
-	  ORDER BY SUM(FaultCount) DESC`,
+	  ORDER BY SUM(TotalFaults) DESC`,
       {
         replacements: { lineID, sectionID },
         type: db.sequelize.QueryTypes.SELECT,
